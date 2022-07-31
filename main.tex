@@ -1,0 +1,110 @@
+\documentclass[UTF8]{ctexart}
+\usepackage[T1]{fontenc}
+\usepackage{setspace}
+\usepackage{pst-barcode}
+\usepackage{tikz}
+\usepackage{draftwatermark}
+\usepackage{dashrule}
+\usepackage[normalem]{ulem}
+\usepackage[paperwidth=14.5cm,paperheight=21cm]{geometry}
+\newgeometry{top=1cm,bottom=0.5cm,left=1.5cm,right=1.5cm}
+\setlength\parindent{0pt}
+\begin{document}
+\include{macro.tex}
+\DraftwatermarkOptions{text=\heiti \fbox{\textWatermark}}
+\pagenumbering{gobble}
+
+\begin{center}
+    \LARGE \heiti \textHospitalName
+    \\
+    \Huge \heiti 处 \space 方 \space 笺
+\end{center}
+
+\vspace{0.5cm}
+
+{
+    \begin{spacing}{1.8}
+    \styleNormalText
+    姓 \space 名：\blockUnderlinedText{\textPatientName}
+    \hfill
+    性 \space 别：\blockUnderlinedText{\textPatientGender}
+    \hfill
+    年 \space 龄：\blockUnderlinedText{\textPatientAge}
+    \hfill
+    科 \space 室：\blockUnderlinedText{\textPatientDep}
+    \\
+    门诊号：\blockUnderlinedText{\textPatientID}
+    \hfill
+    费 \space 别：\blockUnderlinedText{\textPatientFeeType}
+    \hfill
+    日期：
+    \blockUnderlinedText{\textPatientDateYear} 年
+    \blockUnderlinedText{\textPatientDateMonth} 月
+    \blockUnderlinedText{\textPatientDateDay} 日
+    \\
+    临床诊断及证型：\space \textPatientDiag 
+    \end{spacing}
+}
+
+\vspace{0.5cm}
+\hrule
+
+\centerline{
+\begin{minipage}{0.9\linewidth}
+\vspace{0.5cm}
+\blockRSign
+\vspace{0.8cm}
+\include{medicine.tex}
+\hdashrule{\linewidth}{1pt}{5pt}
+\begin{center}
+    \Large (以下空白)
+\end{center}
+\end{minipage}
+}
+
+\vspace*{\fill}
+
+\hrule
+\vspace{0.5cm}
+
+\styleNormalText
+医 \space 师：\blockUnderlinedText{\qquad\textDoctorName\qquad}
+\hfill
+金 \space 额：
+\blockUnderlinedText{\qquad\textFee\qquad}
+\\
+药师（审核、校对、发药）：\blockUnderlinedText{\qquad\qquad}
+\hfill
+药师/士（调配）：\blockUnderlinedText{\qquad\qquad}
+
+\vspace{0.5cm}
+
+\begin{minipage}{0.7\linewidth}
+\begin{spacing}{1}
+    温馨提示：
+    \begin{enumerate}
+        \itemsep0em 
+        \item 本处方当天有效，过期作废；
+        \item 取药时请仔细核对清单，点齐药品；
+        \item 依《电报药品管理法》，药品一经发出，一律不得退换；
+    \end{enumerate}
+\end{spacing}
+\end{minipage}
+
+\begin{tikzpicture}[remember picture,overlay]
+    \node[xshift=-4cm,yshift=-2cm] at (current page.north east){
+        \LARGE \heiti \fbox {普通}
+    };
+    \node[xshift=2cm,yshift=-3cm] at (current page.north west){
+        \psbarcode{*11451419*}{includetext width=2 height=0.5 textsize=15 textgaps=2}{code128}
+    };
+    \node[xshift=-4cm,yshift=1cm] at (current page.south east){
+        \psbarcode{ScanThisToPayYourFeeOfMedicinesAndEnjoyYourLife}{includetext width=1 height=1}{qrcode}
+    };
+    \node[xshift=6.5cm,yshift=6cm] at (current page.south west){
+        \includegraphics[width=6cm,angle=8]{images/sign.png}
+    };
+\end{tikzpicture}
+
+\pagenumbering{gobble}
+\end{document}

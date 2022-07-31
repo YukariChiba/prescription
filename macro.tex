@@ -1,0 +1,39 @@
+% User Defined Values
+
+\newcommand{\textHospitalName}{第三新东京市人民医院}
+\newcommand{\textPatientName}{羊女士}
+\newcommand{\textPatientGender}{女性}
+\newcommand{\textPatientAge}{114514 岁}
+\newcommand{\textPatientDep}{急诊科}
+\newcommand{\textPatientID}{11451419810}
+\newcommand{\textPatientFeeType}{普通病人}
+\newcommand{\textPatientDateYear}{\the\year}
+\newcommand{\textPatientDateMonth}{\the\month}
+\newcommand{\textPatientDateDay}{\the\day}
+\newcommand{\textPatientDiag}{急性网络社交障碍}
+\newcommand{\textDoctorName}{赵紫羊}
+\newcommand{\textFee}{129.00 元}
+
+% Warning: Set this value to blank may be criminal in some countries and regions.
+\newcommand{\textWatermark}{模板示例}
+
+% End
+
+\newcommand{\styleNormalText}{\songti \fontsize{15}{15} \selectfont }
+\newcommand{\blockUnderlinedText}[1]
+    {\uline{\space\space #1 \space\space}}
+\newcommand{\blockRSign}
+    {{\bfseries \sffamily \fontsize{40}{40} \selectfont \; R.}}
+\newcommand{\blockMedicine}[3]{
+    {
+        \LARGE #1
+        \hfill
+        \large #2
+        \hfill
+    }
+    \\
+    \hspace*{1cm}
+    {
+        \large 用法: #3
+    }
+}
